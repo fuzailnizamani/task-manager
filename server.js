@@ -1,5 +1,10 @@
+require('dotenv').config();
 const Express = require('express');
 const app = Express();
+const mongoose = require('mongoose');
+const connectDB = require('./config/dbConect');
+
+connectDB();
 
 app.use(Express.json());
 
