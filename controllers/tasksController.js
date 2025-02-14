@@ -43,7 +43,6 @@ const deleteTask = async (req, res) => {
 };
 
 // Get a single Task 
-
 const getSingleTask = async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
