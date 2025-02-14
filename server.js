@@ -3,7 +3,7 @@ const Express = require('express');
 const app = Express();
 const mongoose = require('mongoose');
 const connectDB = require('./config/dbConect');
-const taskRoutes = require('./routes/tasks');
+const taskRoutes = require('./routes/api/tasks');
 connectDB();
 
 app.use(Express.json());
