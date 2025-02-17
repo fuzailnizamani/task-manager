@@ -6,15 +6,18 @@ const connectDB = require('./config/dbConect');
 const taskRoutes = require('./routes/api/tasks');
 const signupRoute = require('./routes/Signup');
 const loginRoute = require('./routes/login');
+const verifyJWT = require('./middleware/verifyJWT');
 
 connectDB();
 
 app.use(express.json());
 
 // Routes
-app.use('/tasks', taskRoutes);
 app.use('/signup', signupRoute);
 app.use('/login', loginRoute);
+
+app.use(verifyJWT);
+app.use('/tasks', taskRoutes);
 
 app.get('/', (req, res) => {
   res.send('Task Manager API is running...');
