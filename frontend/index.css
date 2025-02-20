@@ -23,14 +23,14 @@
   font-weight: bold;
   color: rgb(50, 50, 50);
   width: 1100px;
-  margin-left: 230px;
+  margin-left: 600px;
   margin-bottom: 0px;
 }
 
 .comment {
   text-align: center;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 25px;
   line-height: 24px;
   color: var(--color-black);
   margin-top: 0px;
