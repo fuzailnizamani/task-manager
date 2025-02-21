@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, rgb(100, 149, 237), rgb(65, 105, 225));
+  background: linear-gradient(135deg, rgb(255, 105, 180), rgb(255, 20, 147));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,7 +8,7 @@ body {
   margin: 0;
 }
 
-.login-container {
+.signup-container {
   background-color: rgb(255, 255, 255);
   padding: 20px;
   border-radius: 8px;
@@ -17,12 +17,12 @@ body {
   text-align: center;
 }
 
-.login-container h2 {
+.signup-container h2 {
   margin-bottom: 20px;
   color: rgb(0, 0, 0);
 }
 
-.login-container input {
+.signup-container input {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
@@ -31,7 +31,7 @@ body {
   box-sizing: border-box;
 }
 
-.login-container button {
+.signup-container button {
   width: 100%;
   padding: 10px;
   background-color: rgb(0, 123, 255);
@@ -40,19 +40,20 @@ body {
   color: rgb(255, 255, 255);
   font-size: 16px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
-.login-container button:hover {
+.signup-container button:hover {
   background-color: rgb(0, 86, 179);
 }
 
-.login-container a {
+.signup-container a {
   color: rgb(0, 123, 255);
   text-decoration: none;
   display: block;
   margin-top: 10px;
 }
 
-.login-container a:hover {
+.signup-container a:hover {
   text-decoration: underline;
 }
