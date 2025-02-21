@@ -34,6 +34,7 @@
   line-height: 24px;
   color: var(--color-black);
   margin-top: 0px;
+  margin-bottom: 50px;
 }
 
 .getStartedButton {
@@ -43,7 +44,10 @@
   line-height: 30px;
   text-align: center;
   align-items: center;
-  padding: 12px 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
   min-width: 215px;
   text-decoration: unset;
   border-radius: 40px;
