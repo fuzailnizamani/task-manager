@@ -24,7 +24,6 @@ const createTask = async (req, res) => {
 // Update a task
 const updatedTask = async (req, res) => {
   try {
-    console.log(req.params.id);
     const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(updatedTask);
   } catch (error) {

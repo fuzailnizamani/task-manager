@@ -7,16 +7,19 @@ const taskRoutes = require('./routes/api/tasks');
 const signupRoute = require('./routes/Signup');
 const loginRoute = require('./routes/login');
 const verifyJWT = require('./middleware/verifyJWT');
+const cors = require('cors');
 
 connectDB();
 
 app.use(express.json());
 
+app.use(cors());
+
 // Routes
 app.use('/signup', signupRoute);
 app.use('/login', loginRoute);
 
-app.use(verifyJWT);
+
 app.use('/tasks', taskRoutes);
 
 app.get('/', (req, res) => {

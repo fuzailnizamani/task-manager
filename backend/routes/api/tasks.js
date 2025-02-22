@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getAllTasks, createTask, updatedTask, deleteTask, getSingleTask } = require('../../backend/controllers/tasksController');
+const { getAllTasks, createTask, updatedTask, deleteTask, getSingleTask } = require('../../controllers/tasksController');
 // Create a Task 
 router.post('/', createTask);
 
