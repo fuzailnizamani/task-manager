@@ -22,10 +22,6 @@ app.use('/login', loginRoute);
 
 app.use('/tasks', taskRoutes);
 
-app.get('/', (req, res) => {
-  res.send('Task Manager API is running...');
-});
-
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT} `));

@@ -45,8 +45,8 @@ async function updateTask(id, completed) {
     });
     const updatedTask = await response.json();
     console.log("Task updated successfully:", updatedTask);
-    return updateTask;
     fetchTasks(); // Refresh the task list
+    return updateTask;
   } catch (error) {
     console.error("Error updating task:", error);
   }
