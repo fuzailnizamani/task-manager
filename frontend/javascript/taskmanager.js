@@ -1,20 +1,26 @@
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
 const BASE_URL = "http://localhost:5000"; // Replace with your backend URL
-import { validateLogin, getAccessToken } from './login.js';
+import { getAccessToken } from "./login.js"; // Import from login.js
+const addtask = document.getElementById("addTask");
 
-// Example usage
-async function loginUser() {
-  await validateLogin(); // Call the login function
-  const token = getAccessToken(); // Get the updated accessToken
-  console.log("Access Token:", token);
+const token = getAccessToken(); // Get token from localStorage
+
+if (!token) {
+  alert("You are not logged in!");
+  window.location.href = "login.html"; // Redirect if not logged in
 }
 
-loginUser();
 // Fetch all tasks from the backend
 async function fetchTasks() {
   try {
-    const response = await fetch(`${BASE_URL}/tasks`);
+    const response = await fetch(`${BASE_URL}/tasks`, {
+      method: "Get",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
+    });
     const tasks = await response.json();
     displayTasks(tasks);
   } catch (error) {
@@ -32,7 +38,10 @@ async function addTask() {
   try {
     const response = await fetch(`${BASE_URL}/tasks`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({ title: inputBox.value, completed: false }),
     });
     const newTask = await response.json();
@@ -49,7 +58,10 @@ async function updateTask(id, completed) {
   try {
     const response = await fetch(`${BASE_URL}/tasks/${id}`, {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({ completed: !completed }),
     });
     const updatedTask = await response.json();
@@ -66,6 +78,10 @@ async function deleteTask(id) {
   try {
     await fetch(`${BASE_URL}/tasks/${id}`, {
       method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
     });
     fetchTasks(); // Refresh the task list
   } catch (error) {
@@ -73,6 +89,7 @@ async function deleteTask(id) {
   }
 }
 
+addtask.addEventListener("click", () => { addTask() });
 
 function displayTasks(tasks) {
   listContainer.innerHTML = ""; // Clear existing tasks

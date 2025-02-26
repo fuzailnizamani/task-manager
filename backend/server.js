@@ -22,7 +22,7 @@ app.use(cors({
 app.use('/signup', signupRoute);
 app.use('/login', loginRoute);
 
-
+app.use(verifyJWT);
 app.use('/tasks', taskRoutes);
 
 const PORT = process.env.PORT || 5000;

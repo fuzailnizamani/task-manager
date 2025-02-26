@@ -1,25 +1,13 @@
 const userBox = document.getElementById("username");
 const passwordBox = document.getElementById("password");
 const BASE_URL = "http://localhost:5000"; // Replace with your backend 
-const loginButton = document.getElementById('login-button');
+const loginButton = document.getElementById("login-button");
 let accessToken = null;
 
-// Only run login-related code if on the login page
-if (window.location.pathname.includes("login.html")) {
-  if (loginButton) {
-    loginButton.addEventListener("click", async () => {
-      await validateLogin();
-    });
-  }
-}
-
 async function validateLogin() {
-  // Check if input fields are not empty
   if (!userBox.value || !passwordBox.value) {
     alert("Username and password are both required.");
-    userBox.value = "";
-    passwordBox.value = "";
-    return;
+    return null;
   }
 
   try {
@@ -38,27 +26,41 @@ async function validateLogin() {
     }
 
     const data = await response.json();
-    accessToken = data.accessToken; // Assuming the backend returns { accessToken: "..." }
+    accessToken = data.accessToken; // Store token
+    localStorage.setItem("accessToken", accessToken); // Store in localStorage
 
-    if (accessToken) {
-      // Redirect to the dashboard page
-      window.location.href = "taskmanager.html";
-    } else {
-      alert("Invalid username or password");
-    }
+    console.log("Access Token:", accessToken);
+    userBox.value = "";
+    passwordBox.value = "";
+
+    return accessToken; // Return token
+
   } catch (error) {
     console.error("Login failed:", error);
     alert("Login failed. Please try again.");
-  } finally {
-    // Clear input fields
     userBox.value = "";
     passwordBox.value = "";
+    // ✅ Clear the stored token on failed login
+    localStorage.removeItem("accessToken");
+    accessToken = null;
+    return null;
   }
 }
 
-// Export a function to get the current accessToken
+// Function to get stored access token
 function getAccessToken() {
-  return accessToken;
+  return localStorage.getItem("accessToken"); // Retrieve from localStorage
 }
 
+// Add event listener for login button
+if (loginButton) {
+  loginButton.addEventListener("click", async () => {
+    const token = await validateLogin();
+    if (token) {
+      window.location.href = "taskmanager.html"; // Redirect if login is successful
+    }
+  });
+}
+
+// Export functions
 export { validateLogin, getAccessToken };
