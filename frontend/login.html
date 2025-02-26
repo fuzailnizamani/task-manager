@@ -11,15 +11,15 @@
 <body>
   <div class="login-container">
     <h2>Login</h2>
-    <input id="user-box" type="text" placeholder="Username" required>
-    <input id="password-box" type="password" placeholder="Password" required>
-    <div class="button-container">
-      <a href="signup.html">Create an account</a>
-      <a href="#" class="button">LOGIN</a>
-    </div>
+    <input type="text" id="username" name="username" placeholder="Username" autocomplete="username" required>
+    <input type="password" id="password" name="password" placeholder="Password" autocomplete="current-password"
+      required>
+    <button id="login-button">LOGIN</button>
+    <div id="error-message" class="error-message"></div>
+    <a href="signup.html">Not registered? Create an account</a>
   </div>
 
-  <script src="./javascript/login.js"></script>
+  <script type="module" src="javascript/login.js"></script>
 </body>
 
 </html>

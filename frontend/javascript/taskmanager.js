@@ -1,7 +1,16 @@
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
 const BASE_URL = "http://localhost:5000"; // Replace with your backend URL
+import { validateLogin, getAccessToken } from './login.js';
 
+// Example usage
+async function loginUser() {
+  await validateLogin(); // Call the login function
+  const token = getAccessToken(); // Get the updated accessToken
+  console.log("Access Token:", token);
+}
+
+loginUser();
 // Fetch all tasks from the backend
 async function fetchTasks() {
   try {
