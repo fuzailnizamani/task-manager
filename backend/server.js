@@ -14,7 +14,7 @@ connectDB();
 app.use(express.json());
 
 app.use(cors({
-  origin: 'http://192.168.100.94:5500', // Allow only your frontend origin
+  origin: 'http://192.168.100.7:5500', // Allow only your frontend origin
   credentials: true, // Allow credentials (cookies, tokens)
 }));
 
