@@ -3,13 +3,39 @@ const listContainer = document.getElementById("list-container");
 const BASE_URL = "http://localhost:5000"; // Replace with your backend URL
 import { getAccessToken } from "./login.js"; // Import from login.js
 const addtask = document.getElementById("addTask");
+const logoutButton = document.getElementById('logout-btn');
+
+logoutButton.addEventListener('click', async function () {
+  try {
+    // Logout functionality
+    const response = await fetch(`${BASE_URL}/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include", // Ensure cookies are included
+      body: JSON.stringify({ username: 'FuzailAhmed', pwd: '123' })
+    });
+
+    // Check if the logout was successful
+    if (response.ok) {
+      alert('You have been logged out.');
+      window.location.href = 'login.html'; // Redirect to login page
+    } else {
+      alert('Logout failed. Please try again.');
+    }
+  } catch (error) {
+    console.error("Logout error:", error);
+    alert("An error occurred. Please try again.");
+  }
+});
 
 const token = getAccessToken(); // Get token from localStorage
+console.log(token);
 
 if (!token) {
   alert("You are not logged in!");
   window.location.href = "login.html"; // Redirect if not logged in
 }
+
 
 // Fetch all tasks from the backend
 async function fetchTasks() {

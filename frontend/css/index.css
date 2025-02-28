@@ -1,135 +1,92 @@
-.title {
-  font-family: Arial;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #153677, #4e085f);
+  padding: 20px;
   text-align: center;
-  margin-top: 50PX;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 20px;
 }
 
 .websiteName {
-  font-size: 50px;
-  color: rgb(47, 198, 247);
+  font-weight: bold;
 }
 
 .time {
-  color: rgb(0, 97, 152);
-  font-size: 50px;
+  font-weight: normal;
+  margin-left: 10px;
 }
 
 .description {
-  font-family: "Montserrat", Arial, sans-serif !important;
-  text-align: center !important;
-  height: 147.2px;
-  line-height: normal;
-  font-size: 60px;
-  font-weight: bold;
-  color: rgb(50, 50, 50);
-  width: 1100px;
-  margin-left: 600px;
-  margin-bottom: 0px;
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 10px;
 }
 
 .comment {
-  text-align: center;
-  font-weight: 400;
-  font-size: 25px;
-  line-height: 24px;
-  color: var(--color-black);
-  margin-top: 0px;
-  margin-bottom: 50px;
+  font-size: 1.2rem;
+  color: #ddd;
+  margin-bottom: 30px;
 }
 
 .getStartedButton {
   display: inline-block;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 30px;
-  text-align: center;
-  align-items: center;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 10px;
-  padding-right: 10px;
-  min-width: 215px;
-  text-decoration: unset;
+  padding: 15px 30px;
+  background: #ff5945;
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
   border-radius: 40px;
-  background-color: rgb(14, 136, 243);
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: box-shadow 1s;
+  transition: background 0.3s ease;
 }
 
 .getStartedButton:hover {
-  box-shadow: 0px 0px 0px rgba(64, 158, 239, 0.5);
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  /* Centers horizontally */
-  align-items: center;
-  /* Centers vertically */
-  height: 5vh;
-  /* Full height of the viewport */
+  background: #e04a3a;
 }
 
 .container1 {
-  display: flex;
-  justify-content: center;
-  /* Centers the image horizontally */
-  align-items: center;
-  /* Centers the image vertically */
-  width: 95vw;
-  height: 100vh;
-  position: relative;
-  /* Allows positioning of background */
-}
-
-.container1::before {
-  content: "";
-  position: absolute;
-  width: 70%;
-  /* Makes the background slightly larger */
-  height: 110%;
-  /* Keeps the aspect ratio */
-  background-image: url("https://www.bitrix24.com/images/content_en/product/tasks_and_projects/free_online_task_manager/hero_back_exp.svg?1739352283118");
-  background-size: contain;
-  /* Ensures the image fits inside without cutting */
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -1;
-  /* Keeps it behind the main image */
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
+  text-align: center;
 }
 
 .image {
-  display: block;
-  width: 50%;
-  /* Adjust to control the size */
-  position: relative;
-  /* Keeps it above the background */
-  z-index: 1;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .block_trusted {
+  font-size: 2rem;
+  color: #333;
   text-align: center;
-  margin-top: 0px;
-  font-family: "Arial", sans-serif;
-  /* Adjust based on the font used */
-  font-size: 36px;
-  /* Adjust for desired text size */
-  font-weight: 300;
-  /* Light font weight */
-  color: #222;
-  /* Dark gray/black color */
-  text-align: center;
-  /* Centers the text */
-  line-height: 1.2;
-  /* Adjust spacing */
+  margin: 40px 0;
 }
 
 .imageBlock {
-  margin-top: 50px;
+  max-width: 100%;
+  height: auto;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 1000px;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
