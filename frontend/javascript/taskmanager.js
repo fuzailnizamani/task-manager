@@ -7,18 +7,15 @@ const logoutButton = document.getElementById('logout-btn');
 
 logoutButton.addEventListener('click', async function () {
   try {
-    // Logout functionality
-    const response = await fetch(`${BASE_URL}/login`, {
+    const response = await fetch(`${BASE_URL}/logout`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include", // Ensure cookies are included
-      body: JSON.stringify({ username: 'FuzailAhmed', pwd: '123' })
+      credentials: "include",
     });
 
-    // Check if the logout was successful
     if (response.ok) {
+      localStorage.removeItem("accessToken"); // ✅ Clear token
       alert('You have been logged out.');
-      window.location.href = 'login.html'; // Redirect to login page
+      window.location.href = 'login.html';
     } else {
       alert('Logout failed. Please try again.');
     }
@@ -29,7 +26,6 @@ logoutButton.addEventListener('click', async function () {
 });
 
 const token = getAccessToken(); // Get token from localStorage
-console.log(token);
 
 if (!token) {
   alert("You are not logged in!");
@@ -70,8 +66,9 @@ async function addTask() {
       },
       body: JSON.stringify({ title: inputBox.value, completed: false }),
     });
+
     const newTask = await response.json();
-    console.log(newTask);
+    console.log("Auth check response:", newTask);
     inputBox.value = ""; // Clear input field
     fetchTasks(); // Refresh the task list
   } catch (error) {

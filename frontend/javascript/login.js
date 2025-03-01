@@ -14,12 +14,10 @@ async function validateLogin() {
     const response = await fetch(`${BASE_URL}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({
-        username: userBox.value,
-        pwd: passwordBox.value,
-      }),
+      credentials: "include", // ✅ Allow cookies to be sent
+      body: JSON.stringify({ username: userBox.value, pwd: passwordBox.value }),
     });
+
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -29,7 +27,6 @@ async function validateLogin() {
     accessToken = data.accessToken; // Store token
     localStorage.setItem("accessToken", accessToken); // Store in localStorage
 
-    console.log("Access Token:", accessToken);
     userBox.value = "";
     passwordBox.value = "";
 
@@ -57,7 +54,9 @@ if (loginButton) {
   loginButton.addEventListener("click", async () => {
     const token = await validateLogin();
     if (token) {
-      window.location.href = "taskmanager.html"; // Redirect if login is successful
+      setTimeout(() => {
+        window.location.href = "taskmanager.html"; // Redirect if login is successful
+      }, 1000);
     }
   });
 }

@@ -13,15 +13,13 @@ const cors = require('cors');
 
 connectDB();
 
-app.use(express.json());
-
-app.use(cors({
-  origin: 'http://192.168.100.7:5500', // Allow only your frontend origin
-  credentials: true, // Allow credentials (cookies, tokens)
-}));
+app.use(cors({ origin: "https://your-frontend-domain.com", credentials: true }));
 
 // cookie parser middleware
 app.use(cookieParser());
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/signup', signupRoute);
